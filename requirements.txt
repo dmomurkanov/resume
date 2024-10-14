@@ -5,4 +5,4 @@ typing_extensions==4.12.2
 psycopg2-binary==2.9.9
 Pillow==10.4.0
 django-modeltranslation==0.19.9
-
+django-ckeditor==6.7.1

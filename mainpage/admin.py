@@ -1,3 +1,8 @@
 from django.contrib import admin
 
-# Register your models here.
+from mainpage.models import PersonalInfo
+
+
+@admin.register(PersonalInfo)
+class PersonalInfoAdmin(admin.ModelAdmin):
+    pass
