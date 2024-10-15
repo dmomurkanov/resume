@@ -7,7 +7,7 @@ class PersonalInfo(models.Model):
     profession = models.CharField("Профессия", max_length=255)
     image = models.ImageField("Картинка баннера", upload_to="personal", null=True)
     image_mobile = models.ImageField("Картинка баннера для мобилки", upload_to="personal", null=True)
-    resume_file = models.FileField("Файл резюме", upload_to="perosnal")
+    resume_file = models.FileField("Файл резюме", upload_to="personal")
     about_me = RichTextField("Текст обо мне")
     linked_in = models.CharField("Ссылка на LinkedIn", max_length=255, default="")
     github = models.CharField("Ссылка на GitHub", max_length=255, default="")

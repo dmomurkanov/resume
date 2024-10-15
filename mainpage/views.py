@@ -1,3 +1,14 @@
 from django.shortcuts import render
 
-# Create your views here.
+from .models import PersonalInfo
+
+
+def main_banner(request):
+    main_info = PersonalInfo.objects.fisrt()
+    return render(
+        request,
+        "mainbanner.html",
+        {
+            "main_info": main_info
+        }
+    )
