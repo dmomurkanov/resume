@@ -58,3 +58,18 @@ class WorkExperience(models.Model):
 
     def __str__(self):
         return self.company_name
+
+
+class Portfolio(models.Model):
+    image = models.ImageField("Картинка", upload_to="portfolio")
+    image_mobile = models.ImageField("Картинка для мобилки", upload_to="portfolio")
+    project_name = models.CharField("Название проекта", max_length=255)
+    github_link = models.CharField("Ссылка на гитхаб проекта", max_length=255, null=True, blank=True)
+    live_demo = models.TextField("Ссылка на демо", null=True, blank=True)
+
+    class Meta:
+        verbose_name = "Проект"
+        verbose_name_plural = "Проекты"
+
+    def __str__(self):
+        return self.project_name
