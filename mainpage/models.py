@@ -44,3 +44,17 @@ class Experience(models.Model):
 
     def __str__(self):
         return self.title
+
+
+class WorkExperience(models.Model):
+    icon = models.ImageField("Иконка компании", upload_to="work_experience")
+    company_name = models.CharField("Название компании", max_length=100)
+    position = models.CharField("Позиция на работе", max_length=255)
+    responsibility = RichTextField("Обязанности на работе")
+
+    class Meta:
+        verbose_name = "Опыт работы"
+        verbose_name_plural = "Опыт работы"
+
+    def __str__(self):
+        return self.company_name

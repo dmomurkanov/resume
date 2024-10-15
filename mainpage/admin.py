@@ -1,6 +1,6 @@
 from django.contrib import admin
 
-from mainpage.models import PersonalInfo, AdditionalInfo, Experience
+from mainpage.models import PersonalInfo, AdditionalInfo, Experience, WorkExperience
 
 
 @admin.register(PersonalInfo)
@@ -14,4 +14,9 @@ class AdditionalInfoAdmin(admin.ModelAdmin):
 
 @admin.register(Experience)
 class ExperienceAdmin(admin.ModelAdmin):
+    pass
+
+
+@admin.register(WorkExperience)
+class WorkExperienceAdmin(admin.ModelAdmin):
     pass
