@@ -8,6 +8,82 @@
     <link rel="stylesheet" href="{% static 'css/style.css' %}">
 </head>
 <body>
+    <div>
+        <header>
+            <div class="mainbanner">
+                <div class="navigation">
+                    {% for main in main_info %}
+                    <h5>Привет, меня зовут</h5>
+                    <h1>{{main.fullname}}</h1>
+                    <p>{{main.profession}}</p>
+                    <div class="nav_buttons">
+                        <a href={{main.resume_file}}>Резюме</a>
+                        <a href="">Контакты</a>
+                    </div>
+                </div>
+                <div class="banner_image">
+                    <img class="main_image" src={{main.image}}>
+                </div>
+                {% endfor %}
+            </div>
+        </header>
+        <div class="about_me">
+            <h2>About Me</h2>
+            {% for main in main_info %}
+            <div class="about_me_image">
+                <img class="about_me_img" src={{main.image}}>
+            </div>
+            <div class="about_me_text">
+                <h3>
+                    {{main.about_me | safe}}
+                </h3>
+                <div class="about_cards">
+                    {% for add in additional %}
+                    <article class="about_card">
+                        <div class="add_header">
+                            <img class="icon_additional" src="{{add.icon}}">
+                            <h4 class="add_title">{{add.title}}</h4>
+                        </div>
+                        <h6 class="add_text">{{add.text | safe}}</h6>
+                    </article>
+                    {% endfor %}
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+        <div class="experience">
+            <h3>Мой опыт</h3>
+            {% for exp in experience %}
+            <div class="experience_items">
+                <h3 class="exp_title">{{exp.title}}</h3>
+                <h6 class="exp_text">{{exp.text | safe}}</h6>
+            </div>
+            {% endfor %}
+        </div>
+        <div class="work">
+            <h2 class="work_title">Опыт работы</h2>
+            <article class="work_items">
+                {% for wk in work_experience %}
+                <svg class="work_icon">{{wk.icon}}</svg>
+                <h5 class="work_title">{{wk.company_name}}</h5>
+                <h5 class="work_position">{{wk.position}}</h5>
+                <small class="work_text">{{wk.responsibility | safe}}</small>
+                {% endfor %}
+            </article>
 
+        </div>
+        <div class="leadership">
+            <h2 class="work_title">Опыт лидерства</h2>
+            <article class="work_items">
+                {% for leader in leadership %}
+                <svg class="work_icon">{{leader.icon}}</svg>
+                <h5 class="work_title">{{leader.company_name}}</h5>
+                <h5 class="work_position">{{leader.position}}</h5>
+                <small class="work_text">{{leader.responsibility | safe}}</small>
+                {% endfor %}
+            </article>
+
+        </div>
+    </div>
 </body>
 </html>

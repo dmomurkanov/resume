@@ -1,13 +1,17 @@
+import os
+
 from django.db import models
 from ckeditor.fields import RichTextField
+
+from mainpage.utils import directory_path
 
 
 class PersonalInfo(models.Model):
     fullname = models.CharField("Полное имя", max_length=255)
     profession = models.CharField("Профессия", max_length=255)
-    image = models.ImageField("Картинка баннера", upload_to="personal", null=True)
-    image_mobile = models.ImageField("Картинка баннера для мобилки", upload_to="personal", null=True)
-    resume_file = models.FileField("Файл резюме", upload_to="personal")
+    image = models.ImageField("Картинка баннера", upload_to=    directory_path, null=True)
+    image_mobile = models.ImageField("Картинка баннера для мобилки", upload_to=directory_path, null=True)
+    resume_file = models.FileField("Файл резюме", upload_to=directory_path)
     about_me = RichTextField("Текст обо мне")
     linked_in = models.CharField("Ссылка на LinkedIn", max_length=255, default="")
     github = models.CharField("Ссылка на GitHub", max_length=255, default="")
@@ -22,7 +26,7 @@ class PersonalInfo(models.Model):
         return self.fullname
 
 class AdditionalInfo(models.Model):
-    icon = models.ImageField("Иконка", upload_to="additional")
+    icon = models.ImageField("Иконка", upload_to=directory_path)
     title = models.CharField("Заголовок", max_length=50)
     text = RichTextField("Текст")
 
@@ -47,11 +51,11 @@ class Experience(models.Model):
 
 
 class WorkExperience(models.Model):
-    icon = models.ImageField("Иконка компании", upload_to="work_experience")
+    icon = models.ImageField("Иконка компании", upload_to=directory_path)
     company_name = models.CharField("Название компании", max_length=100)
     position = models.CharField("Позиция на работе", max_length=255)
     responsibility = RichTextField("Обязанности на работе")
-
+    leadership = models.BooleanField("Лидерство", default=False)
     class Meta:
         verbose_name = "Опыт работы"
         verbose_name_plural = "Опыт работы"
@@ -61,8 +65,8 @@ class WorkExperience(models.Model):
 
 
 class Portfolio(models.Model):
-    image = models.ImageField("Картинка", upload_to="portfolio")
-    image_mobile = models.ImageField("Картинка для мобилки", upload_to="portfolio")
+    image = models.ImageField("Картинка", upload_to=directory_path)
+    image_mobile = models.ImageField("Картинка для мобилки", upload_to=directory_path)
     project_name = models.CharField("Название проекта", max_length=255)
     github_link = models.CharField("Ссылка на гитхаб проекта", max_length=255, null=True, blank=True)
     live_demo = models.TextField("Ссылка на демо", null=True, blank=True)

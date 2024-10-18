@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     "django.contrib.staticfiles",
 
     'ckeditor',
+    "rest_framework",
 
     "mainpage",
 ]
@@ -59,7 +60,7 @@ ROOT_URLCONF = "resume.urls"
 TEMPLATES = [
     {
         "BACKEND": "django.template.backends.django.DjangoTemplates",
-        "DIRS": [],
+        "DIRS": [BASE_DIR, "templates"],
         "APP_DIRS": True,
         "OPTIONS": {
             "context_processors": [
@@ -74,7 +75,10 @@ TEMPLATES = [
 
 WSGI_APPLICATION = "resume.wsgi.application"
 
+STATIC_URL = '/static/'
 
+# Добавьте путь к статическим файлам, если у вас они лежат вне приложения
+STATICFILES_DIRS = [BASE_DIR]
 # Database
 # https://docs.djangoproject.com/en/4.2/ref/settings/#databases
 
